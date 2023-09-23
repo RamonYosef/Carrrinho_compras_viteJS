@@ -1,4 +1,4 @@
-import { btnCheck } from "../componets/buttons";
+import { btnCheck, btnDel } from "../componets/buttons";
 import { product, productBuy } from "../variables";
 
 function data() {
@@ -16,44 +16,66 @@ function dataPush(e) {
 }
 
 function renderTodos() {
+    product.innerHTML = "";
+    productBuy.innerHTML = "";
+    const prevdata = data();
+
     data().forEach((e, index) => {
-        product.innerHTML = '';
-        productBuy.innerHTML = '';
+        const itemLi = document.createElement("li");
+        itemLi.setAttribute("data-index", index);
 
-        const itemList = document.createElement('li');
-        itemList.setAttribute('data-index', index)
-
-        const HtmlList = `
-        <span class='mb-3'>
-            <strong>Nome: </strong> ${e.nome} <br>
-            <strong>Valor: </strong> ${e.valor} <br>
-            <strong>Descrição: </strong> ${e.desc} <br> 
-            <strong>Quantidade: </strong> ${e.qtd} <br>
+        const itemHtml = `
+        <span>
+              <strong>Nome:</strong> ${e.nome} <br>
+              <strong>Valor:</strong> ${e.valor} <br>
+              <strong>descrição:</strong> ${e.desc} <br>
+              <strong>quantidade:</strong> ${e.qtd} 
         </span>
-        <span class='mb-3'>
-            <button class='btn btn-success btn-sm check'>Comprado</button>
-            <button class='btn btn-primary btn-sm'>Editar</button>
-            <button class='btn btn-danger btn-sm'>Remover</button>
+        <span class='d-flex gap-3 mt-3'> 
+             ${prevdata[index].check === true
+                ?
+                "<button class='btn btn-danger check btn-sm'>Voltar</button>" +
+                "<button class='btn d-none btn-edit btn-sm'>Editar</button>" +
+                "<button class='btn d-none btn-danger  del btn-sm'>delete</button>"
+                :
+                "<button class='btn btn-success check btn-sm'>Comprado</button>" +
+                "<button class='btn btn-primary btn-edit btn-sm'>Editar</button>" +
+                "<button class='btn btn-danger del btn-sm'>delete</button>"
+            }  
         </span>
-    
-    `;
+      `;
 
-        itemList.innerHTML = HtmlList;
+        itemLi.innerHTML = itemHtml;
 
-        { e.check == false ? product.append(itemList) : productBuy.append(itemList) }
+        {e.check == false ? product.append(itemLi) : productBuy.append(itemLi)}
 
+        // if (e.check == false) {
+        //     product.append(itemLi);
+        // } else {
+        //     productBuy.append(itemLi);
+        // }
     });
 
     btnCheck();
-
+    btnDel();
 }
 
-function checkList(index){
+
+function checkList(index) {
     const prevdata = data();
     prevdata[index].check = !prevdata[index].check;
     localStorage.setItem('list', JSON.stringify(prevdata));
 }
 
+function delList(index) {
+    const prevdata = data();
+    prevdata.splice(index, 1)
+    localStorage.setItem('list', JSON.stringify(prevdata));
+}
+
 export {
-    renderTodos, dataPush, checkList
+    renderTodos,
+    dataPush,
+    checkList,
+    delList
 }
