@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container py-3">
+      <div class="row justify-content-center">
+        <div class="col-lg-4">
+          <form action="" id="formProduct">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="Nome do produto" name="nome">
+            </div>
+            <div class="mb-3">
+              <input type="number" class="form-control" placeholder="valor" name="valor">
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="descrição" name="desc">
+            </div>
+            <div class="mb-3">
+              <input type="number" class="form-control" placeholder="Quantidade" name="qtd">
+            </div>
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary">Adicionar</button>
+            </div>
+          </form>
+
+
+          <div class="d-flex gap-3">
+            <ul id="product" class="bg-light"></ul>
+            <ul id="productBuy" class="bg-success"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="src/js/main.js"></script>
+</body>
+
+</html>
