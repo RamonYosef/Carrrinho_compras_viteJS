@@ -1,5 +1,5 @@
 import { btnCheck, btnDel, btnEdit } from "../componets/buttons";
-import { product, productBuy } from "../variables";
+import { myModal, product, productBuy } from "../variables";
 
 function data() {
     if (localStorage.getItem('list')) {
@@ -83,8 +83,27 @@ function editList(index){
     form.querySelector('[name=descEdit]').value = prevdata[index].desc;
     form.querySelector('[name=qtdEdit]').value = prevdata[index].qtd;
     console.log(prevdata[index].nome); 
+
+    form.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        const newData = ({
+            nome:  form.querySelector('[name=nomeEdit]').value,
+            valor: form.querySelector('[name=valorEdit]').value,
+            desc: form.querySelector('[name=descEdit]').value,
+            qtd:  form.querySelector('[name=qtdEdit]').value,
+            check: false
+        })
+
+        prevdata[index] = newData;
+        localStorage.setItem('list', JSON.stringify(prevdata));
+        myModal.hide();
+
+        renderTodos();
+    })
    
 }
+
+
 
 
 
@@ -93,5 +112,5 @@ export {
     dataPush,
     checkList,
     delList,
-    editList
+    editList,
 }
