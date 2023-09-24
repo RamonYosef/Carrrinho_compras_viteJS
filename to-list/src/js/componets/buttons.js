@@ -1,4 +1,5 @@
-import { checkList, delList, renderTodos } from "../data/todos";
+import { checkList, delList, editList, renderTodos } from "../data/todos";
+import { myModal } from "../variables";
 
 function btnCheck(){
     const check = document.querySelectorAll('.check');
@@ -26,7 +27,22 @@ function btnDel(){
     })
 }
 
+function btnEdit(){
+    const edit = document.querySelectorAll('.edit');
+
+    edit.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const li = btn.closest('li');
+            const index = li.dataset.index;
+            editList(index);
+            myModal.show();
+            renderTodos();
+        })
+    })
+}
+
 export{
     btnCheck,
-    btnDel
+    btnDel,
+    btnEdit
 }

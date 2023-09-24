@@ -1,4 +1,4 @@
-import { btnCheck, btnDel } from "../componets/buttons";
+import { btnCheck, btnDel, btnEdit } from "../componets/buttons";
 import { product, productBuy } from "../variables";
 
 function data() {
@@ -39,7 +39,7 @@ function renderTodos() {
                 "<button class='btn d-none btn-danger  del btn-sm'>delete</button>"
                 :
                 "<button class='btn btn-success check btn-sm'>Comprado</button>" +
-                "<button class='btn btn-primary btn-edit btn-sm'>Editar</button>" +
+                "<button class='btn btn-primary edit btn-sm'>Editar</button>" +
                 "<button class='btn btn-danger del btn-sm'>delete</button>"
             }  
         </span>
@@ -58,6 +58,7 @@ function renderTodos() {
 
     btnCheck();
     btnDel();
+    btnEdit();
 }
 
 
@@ -73,9 +74,24 @@ function delList(index) {
     localStorage.setItem('list', JSON.stringify(prevdata));
 }
 
+function editList(index){
+    const prevdata = data();
+    const form = document.querySelector('#formProductEdit');
+
+    form.querySelector('[name=nomeEdit]').value = prevdata[index].nome;
+    form.querySelector('[name=valorEdit]').value = prevdata[index].valor;
+    form.querySelector('[name=descEdit]').value = prevdata[index].desc;
+    form.querySelector('[name=qtdEdit]').value = prevdata[index].qtd;
+    console.log(prevdata[index].nome); 
+   
+}
+
+
+
 export {
     renderTodos,
     dataPush,
     checkList,
-    delList
+    delList,
+    editList
 }
