@@ -1,97 +1,109 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #7430f9 0%, #7431f9 100%);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.form-control {
+  border: 2px solid #7430f9;
+  padding-left: 16px;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.form-control::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #7430f9;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+.btn-submit {
+  font-family: "Poppins", sans-serif;
+  background-color: #7430f9;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  width: 200px;
+  transition: 0.3s;
 }
 
-.card {
-  padding: 2em;
+.btn-submit:hover {
+  background-color: #8146f7;
 }
 
-.read-the-docs {
-  color: #888;
+.btn-submit-edit {
+  font-family: "Poppins", sans-serif;
+  background-color: #7430f9;
+  color: #fff;
+  border: none;
+  width: 120px;
+  transition: 0.3s;
 }
 
-button {
+.btn-submit-edit:hover {
+  background-color: #8146f7;
+}
+
+.btn-closet {
+  font-family: "Poppins", sans-serif;
+  background-color: #0adae7;
+  color: #fff;
+  border: none;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  width: 120px;
+  transition: 0.3s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.btn-closet:hover {
+  background-color: #08b4c0;
 }
+
+.btn-back{
+  word-break: break-all;
+}
+
+.modal-title {
+  font-family: "Poppins", sans-serif;
+  color: #7430f9;
+}
+
+.product {
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.product-buy {
+  padding: 0;
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  word-break: break-all;
+}
+
+.list__item {
+  padding: 20px;
+  border-radius: 5px;
+ 
+}
+
+.list__item_buy {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #44b93e;
+  word-break: break-all;
+  color: white;
+  
+}
+

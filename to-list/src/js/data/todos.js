@@ -22,10 +22,12 @@ function renderTodos() {
 
     data().forEach((e, index) => {
         const itemLi = document.createElement("li");
+        
         itemLi.setAttribute("data-index", index);
 
         const itemHtml = `
         <span>
+            ${prevdata[index].check === true? "<strong class='fs-3'>Realizado <i class='bx bxs-badge-check'></i></strong><br>": ""}
               <strong>Nome:</strong> ${e.nome} <br>
               <strong>Valor:</strong> ${e.valor} <br>
               <strong>descrição:</strong> ${e.desc} <br>
@@ -34,9 +36,9 @@ function renderTodos() {
         <span class='d-flex gap-3 mt-3'> 
              ${prevdata[index].check === true
                 ?
-                "<button class='btn btn-danger check btn-sm'>Voltar</button>" +
-                "<button class='btn d-none btn-edit btn-sm'>Editar</button>" +
-                "<button class='btn d-none btn-danger  del btn-sm'>delete</button>"
+                "<button class='btn btn-danger check btn-sm btn-back'>Voltar</button>" +
+                "<button class='btn  invisible btn-edit btn-sm'>Editar</button>" +
+                "<button class='btn  invisible btn-danger  del btn-sm'>delete</button>"
                 :
                 "<button class='btn btn-success check btn-sm'>Comprado</button>" +
                 "<button class='btn btn-primary edit btn-sm'>Editar</button>" +
@@ -48,6 +50,8 @@ function renderTodos() {
         itemLi.innerHTML = itemHtml;
 
         {e.check == false ? product.append(itemLi) : productBuy.append(itemLi)}
+        {e.check == false ? itemLi.classList.add("list__item", "bg-light") : itemLi.classList.add("list__item_buy");}
+        
 
         // if (e.check == false) {
         //     product.append(itemLi);
